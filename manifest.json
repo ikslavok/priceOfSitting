@@ -1,0 +1,18 @@
+{
+  "name": "The price of sitting",
+  "description": "X number of pushups gives you x number of the sitting time. Keep track of this and you will be in the safe zone. If you spend all minutes, a window with warning will popup to remind you that you are exposed to risk.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "author": "Filip Ilic",
+  "action": {
+    "default_icon": {
+      "16": "./images/chair16.png",
+      "24": "images/chair24.png",
+      "32": "images/chair32.png"
+    },
+    "default_title": "Price of Sitting",
+    "default_popup": "popup.html"
+  }
+
+  
+}
