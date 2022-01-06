@@ -12,7 +12,6 @@
     },
     "default_title": "Price of Sitting",
     "default_popup": "popup.html"
-  }
-
-  
+  },
+  "permissions": ["storage"]
 }
