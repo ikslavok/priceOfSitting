@@ -79,6 +79,7 @@ button{
 }
 .add-time .tta{
     background: rgba(255, 253, 253, 0.51);
+    color: rgb(131, 122, 122);
     width: 100px;
     height: 15px;
     font-weight: 100;

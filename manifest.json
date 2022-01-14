@@ -13,5 +13,8 @@
     "default_title": "Price of Sitting",
     "default_popup": "popup.html"
   },
+  "background": {
+    "service_worker": "background.js"
+  },
   "permissions": ["storage"]
 }
