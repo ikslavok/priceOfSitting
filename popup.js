@@ -5,12 +5,14 @@ let counting;
 const headline = document.getElementById("headline"),
     countdown = document.getElementById("countdown"),
     button = document.getElementById("toggleButton"),
+    reset = document.getElementById("resetButton"),
     add1 = document.getElementById("add-time-1"),
     add2 = document.getElementById("add-time-2"),
     add3 = document.getElementById("add-time-3");
 
 //listen to this events
 button.addEventListener("click", toggleTimer);
+reset.addEventListener("click", resetTimer);
 add1.addEventListener("click", addTime1);
 add2.addEventListener("click", addTime2);
 add3.addEventListener("click", addTime3);
@@ -25,7 +27,7 @@ displayTime();
 function toggleTimer() {
     chrome.storage.sync.get(["sitting", "timeLeft"], ({sitting, timeLeft}) => {
         if(!sitting){
-            headline.innerText = "You are sitting. Take care.";
+            headline.innerText = "You are sitting now.";
             button.innerText = "Stand Up";
             chrome.storage.sync.set({sitting : true});
             counting = setInterval(() => {
@@ -34,7 +36,7 @@ function toggleTimer() {
                 }, 1000);
         } else{
             button.innerText = "Sit Down";
-            headline.innerText = "Oook u got up for now.";
+            headline.innerText = "You just stood up for yourself.";
             chrome.storage.sync.set({sitting : false});
             clearInterval(counting);
             
@@ -49,8 +51,7 @@ function displayTime() {
         if(timeLeft > 0){
             countdown.innerText = min + ":" + sec;
         }else{
-            sec = sec * -1;
-            countdown.innerText = min + ":" + sec;
+            countdown.innerText = min + ":" + sec * -1;
         }
     });    
 }
@@ -72,4 +73,10 @@ function addTime3(){
         chrome.storage.sync.set({timeLeft : timeLeft += 2400});
         displayTime();
     });
+}
+//reset timer
+function resetTimer(){
+    clearInterval(counting);
+    chrome.storage.sync.set({timeLeft : 0});
+    displayTime();
 }
